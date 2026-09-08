@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfólio de Saulo Sena, desenvolvedor backend em formação com foco em dados — ETL, visualização de dados e modelos de IA.">
+<meta name="author" content="Saulo Sena">
+<title>Saulo Sena — Desenvolvedor Backend & Dados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#15181A;
+    --paper-dim:#1E2225;
+    --ink:#ECEAE2;
+    --ink-soft:#9BA39B;
+    --rust:#DD7A46;
+    --teal:#7FB3A8;
+    --line:#2C3130;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Newsreader', serif;
+    margin:0;
+    font-weight:500;
+    color:var(--ink);
+  }
+
+  a{color:var(--rust); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--teal); outline-offset:3px;}
+
+  .skip-link{
+    position:absolute; left:-9999px; top:0; z-index:100;
+    background:var(--teal); color:var(--paper); padding:10px 18px;
+    font-family:'IBM Plex Sans', sans-serif; font-size:.9rem;
+  }
+  .skip-link:focus{left:16px; top:16px;}
+
+  .wrap{max-width:920px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- Header ---------- */
+  header.masthead{
+    border-bottom:1px solid var(--line);
+    padding:22px 0;
+  }
+  .masthead-row{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; text-align:center;
+  }
+  .masthead-name{font-size:1.05rem; font-weight:600; font-family:'IBM Plex Sans',sans-serif; letter-spacing:.01em;}
+  nav.index-links{display:flex; justify-content:center; gap:22px; font-size:.9rem;}
+  nav.index-links a{color:var(--ink-soft);}
+  nav.index-links a:hover{color:var(--rust);}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:64px 0 48px; text-align:center; display:flex; flex-direction:column; align-items:center;}
+  .hero-photo{
+    width:132px; height:132px; border-radius:50%;
+    object-fit:cover; object-position:center 15%;
+    border:1px solid var(--line);
+    margin-bottom:28px;
+  }
+  .hero-eyebrow{font-size:.95rem; color:var(--teal); margin-bottom:14px; font-weight:500;}
+  .hero .headline{
+    font-family:'Newsreader', serif; font-weight:500; color:var(--ink);
+    font-size:clamp(2.2rem, 5vw, 3.4rem); line-height:1.12; max-width:16ch; margin:0;
+  }
+  .hero p.lede{
+    max-width:56ch; font-size:1.1rem; color:var(--ink-soft); margin-top:20px;
+  }
+  .hero-meta{
+    margin-top:30px; display:flex; justify-content:center; gap:28px; flex-wrap:wrap; font-family:'IBM Plex Mono', monospace; font-size:.85rem; color:var(--ink-soft);
+  }
+  .hero-meta span{white-space:nowrap;}
+
+  /* ---------- Ledger rows ---------- */
+  .ledger{border-top:1px solid var(--line);}
+  .row{
+    display:grid;
+    grid-template-columns:180px 1fr;
+    gap:0;
+    border-bottom:1px solid var(--line);
+    padding:40px 0;
+  }
+  .row-label{
+    font-family:'Newsreader', serif;
+    font-size:1.15rem;
+    font-style:italic;
+    color:var(--teal);
+    text-align:right;
+    padding-top:2px;
+    padding-right:32px;
+    border-right:1px solid var(--line);
+  }
+  .row-content{padding-left:32px;}
+  .row-content > * + *{margin-top:18px;}
+  .row-content p{margin:0; color:var(--ink-soft); max-width:62ch;}
+
+  /* Stack tags */
+  .tag-group{margin-bottom:4px;}
+  .tag-group-label{font-size:.78rem; text-transform:none; color:var(--ink-soft); margin-bottom:8px; font-weight:500;}
+  .tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.82rem;
+    padding:5px 11px;
+    border:1px solid var(--line);
+    color:var(--ink);
+    background:var(--paper-dim);
+  }
+
+  /* Experience entries */
+  .entry{}
+  .entry-head{display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap;}
+  .entry-org{font-weight:600; font-size:1.02rem;}
+  .entry-date{font-family:'IBM Plex Mono', monospace; font-size:.78rem; color:var(--ink-soft); white-space:nowrap;}
+  .entry-role{color:var(--rust); font-size:.92rem; margin-top:2px; display:block;}
+  .entry p{margin-top:10px;}
+
+  /* Education */
+  .edu-block + .edu-block{margin-top:22px;}
+  .edu-school{font-weight:600;}
+  .edu-years{font-family:'IBM Plex Mono', monospace; font-size:.8rem; color:var(--ink-soft);}
+  ul.courses{margin:8px 0 0; padding-left:18px; color:var(--ink-soft);}
+  ul.courses li{margin-bottom:4px;}
+
+  /* Languages */
+  .lang-list{display:flex; gap:36px; flex-wrap:wrap;}
+  .lang-item .lang-name{font-weight:600;}
+  .lang-item .lang-level{display:block; font-size:.85rem; color:var(--ink-soft);}
+
+  /* ---------- Contact / footer ---------- */
+  .contact-row{padding:56px 0 60px; text-align:center;}
+  .contact-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:24px 48px;
+    max-width:52ch; margin:0 auto;
+  }
+  .contact-item{display:flex; flex-direction:column; align-items:center; gap:4px;}
+  .contact-item .k{font-size:.78rem; color:var(--ink-soft); font-family:'IBM Plex Mono', monospace;}
+  .contact-item .v a, .contact-item .v{font-size:1rem;}
+
+  .cta-line{
+    margin-top:34px; padding-top:28px; border-top:1px solid var(--line);
+    display:flex; flex-direction:column; align-items:center; gap:16px;
+  }
+  .cta-line p{margin:0; color:var(--ink-soft); max-width:40ch; text-align:center;}
+  .btn{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:600;
+    font-size:.95rem;
+    background:var(--rust);
+    color:#15181A;
+    padding:12px 22px;
+    border:none;
+    cursor:pointer;
+    display:inline-block;
+  }
+  .btn:hover{background:#EE8F5C; text-decoration:none;}
+
+  footer{
+    padding:22px 0 40px; color:var(--ink-soft); font-size:.8rem; font-family:'IBM Plex Mono', monospace;
+  }
+
+  @media (max-width: 680px){
+    .row{grid-template-columns:1fr; gap:10px; padding:30px 0;}
+    .row-label{
+      padding-top:0; padding-right:0; text-align:left;
+      border-right:none; border-bottom:1px solid var(--line);
+      padding-bottom:14px;
+    }
+    .row-content{padding-left:0;}
+    nav.index-links{display:none;}
+    .contact-grid{grid-template-columns:1fr; justify-items:center;}
+    .hero{padding:44px 0 34px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="masthead">
+  <div class="wrap masthead-row">
+    <h1 class="masthead-name">Saulo Sena</h1>
+    <nav class="index-links" aria-label="Navegação principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#stack">Stack</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#formacao">Formação</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<section class="hero wrap">
+  <img class="hero-photo" src="foto-saulo.jpg" alt="Foto de Saulo Sena">
+  <div class="hero-eyebrow">Fortaleza, CE</div>
+  <p class="headline">Desenvolvedor backend em formação, com foco em dados.</p>
+  <p class="lede">Estudante de Ciências da Computação na Unifor, atuando com ETL, visualização de dados e modelos de IA. Interessado em vagas na área de dados.</p>
+  <div class="hero-meta">
+    <span>6º semestre · Unifor</span>
+    <span>Java · Python · SQL</span>
+    <span>Qlik Sense · ETL</span>
+  </div>
+</section>
+
+<div class="ledger wrap">
+
+  <div class="row" id="sobre">
+    <h2 class="row-label">Sobre</h2>
+    <div class="row-content">
+      <p>Trabalho hoje na fronteira entre dados e desenvolvimento: na DATAPREV, transformo dados brutos em dashboards que outras pessoas usam para decidir; no Núcleo de Ciência de Dados e IA da Unifor, testo e valido modelos até garantir que os números fazem sentido. É esse ciclo — organizar, entender, apresentar — que mais me interessa na área de dados, e é o que busco continuar fazendo, em maior escala, na próxima etapa da carreira.</p>
+    </div>
+  </div>
+
+  <div class="row" id="stack">
+    <h2 class="row-label">Stack</h2>
+    <div class="row-content">
+      <div class="tag-group">
+        <div class="tag-group-label">Linguagens</div>
+        <div class="tags">
+          <span class="tag">Java</span>
+          <span class="tag">Python</span>
+          <span class="tag">JavaScript</span>
+        </div>
+      </div>
+      <div class="tag-group">
+        <div class="tag-group-label">Dados & BI</div>
+        <div class="tags">
+          <span class="tag">MySQL</span>
+          <span class="tag">Oracle</span>
+          <span class="tag">Qlik Sense</span>
+          <span class="tag">ETL</span>
+        </div>
+      </div>
+      <div class="tag-group">
+        <div class="tag-group-label">Ferramentas</div>
+        <div class="tags">
+          <span class="tag">Git</span>
+          <span class="tag">GitHub</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" id="experiencia">
+    <h2 class="row-label">Experiência</h2>
+    <div class="row-content">
+
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <span class="entry-org">DATAPREV</span>
+            <span class="entry-role">Estagiário de Dados</span>
+          </div>
+          <span class="entry-date">set 2025 — set 2026</span>
+        </div>
+        <p>Desenvolvimento de dashboards com Qlik Sense, atuando em visualização de dados, processos de ETL, integração e tratamento de dados.</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <span class="entry-org">Núcleo de Ciência de Dados e IA — Unifor</span>
+            <span class="entry-role">Bolsista</span>
+          </div>
+          <span class="entry-date">set 2025 — jul 2026</span>
+        </div>
+        <p>Atuação com inteligência artificial, com foco no desenvolvimento e validação de modelos, incluindo a implementação de métricas para avaliação de desempenho e qualidade.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row" id="formacao">
+    <h2 class="row-label">Formação</h2>
+    <div class="row-content">
+
+      <div class="edu-block">
+        <span class="edu-school">Unifor — Ciências da Computação</span>
+        <span class="edu-years">Bacharelando, desde 2024</span>
+      </div>
+
+      <div class="edu-block">
+        <span class="edu-school">Ensino Médio</span>
+        <span class="edu-years">Colégio Master (2021–2022) · Farias Brito Sul (2023)</span>
+      </div>
+
+      <div class="edu-block">
+        <div class="tag-group-label" style="margin-bottom:8px;">Cursos complementares</div>
+        <ul class="courses">
+          <li>Unifor — Trilha de Formação em Iniciação Científica e Tecnológica (2025)</li>
+          <li>Fundação Bradesco — Introdução à Programação Orientada a Objetos (2025)</li>
+          <li>Fundação Bradesco — Linguagem de Programação Python: Básico (2025)</li>
+          <li>Rocketseat — O básico de Git e GitHub (2026)</li>
+          <li>Rocketseat — Fundamentos de Python (2026)</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row" id="idiomas">
+    <h2 class="row-label">Idiomas</h2>
+    <div class="row-content">
+      <div class="lang-list">
+        <div class="lang-item">
+          <span class="lang-name">Português</span>
+          <span class="lang-level">Fluente</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name">Inglês</span>
+          <span class="lang-level">Intermediário</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<section class="contact-row wrap" id="contato">
+  <div class="contact-grid">
+    <div class="contact-item">
+      <span class="k">email</span>
+      <span class="v"><a href="mailto:saulobdsena@gmail.com">saulobdsena@gmail.com</a></span>
+    </div>
+    <div class="contact-item">
+      <span class="k">telefone</span>
+      <span class="v">(85) 99835-3293</span>
+    </div>
+    <div class="contact-item">
+      <span class="k">github</span>
+      <span class="v"><a href="https://github.com/saulobdsena" target="_blank" rel="noopener">github.com/saulobdsena</a></span>
+    </div>
+    <div class="contact-item">
+      <span class="k">linkedin</span>
+      <span class="v"><a href="https://www.linkedin.com/in/saulobdsena/" target="_blank" rel="noopener">linkedin.com/in/saulobdsena</a></span>
+    </div>
+  </div>
+
+  <div class="cta-line">
+    <p>Aberto a oportunidades na área de dados.</p>
+    <a class="btn" href="mailto:saulobdsena@gmail.com">Enviar e-mail</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap">
+  Saulo Sena — Fortaleza, CE
+</footer>
+
+</body>
+</html>
